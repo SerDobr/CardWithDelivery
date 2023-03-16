@@ -1,8 +1,8 @@
-import com.codeborne.selenide.Condition;
+//import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
+//import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,28 +16,30 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CardWithDeliveryTest {
-    //    private WebDriver driver;
-//
+    private WebDriver driver;
+
+    //
     @BeforeAll
     static void setupAll() {
         WebDriverManager.chromedriver().setup();
     }
 
 
-    //    @BeforeEach //Selenium
-//    public void setUp() {
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--disable-dev-shm-usage");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--headless");
-//        driver = new ChromeDriver(options);
-//    }
-//
-//    @AfterEach
-//    void tearDown() {
-//        driver.quit();
-//        driver=null;
-//    }
+    @BeforeEach //Selenium
+    public void setUp() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+    }
+
+    @AfterEach
+    void tearDown() {
+        driver.quit();
+        driver = null;
+    }
+
     String date = LocalDate.now().plusDays(4).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));// Установка даты через 3 дня
 
     @Test
